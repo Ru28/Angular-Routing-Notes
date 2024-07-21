@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, RouterLinkActive, RouterLinkWithHref } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'AngularRoute';
+
+  constructor(private router: Router){}
+
+  navigateToNotes(){
+    this.router.navigate(['/notes']);
+  }
+
+  navigateToNote(id:number){
+    this.router.navigate(['/note',id])
+  }
 }
